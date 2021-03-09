@@ -3,6 +3,8 @@
 Hi Adam!
 Here is a place for code...
 
+Your mission is to figure out how to add a file!
+
 However this maybe over kill... duno
 
 Is there a pico8 way of sharing?
