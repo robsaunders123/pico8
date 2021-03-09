@@ -3,6 +3,10 @@
 Hi Adam!
 Here is a place for code...
 
+However this maybe over kill... duno
+
+Is there a pico8 way of sharing?
+
 
 Links you gave me:
 
