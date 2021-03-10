@@ -7,119 +7,116 @@ sfx(0)
 sfx(1) 
 
 warpintro={
-x=20,y=-20,
-done_y=79,
-frame=3,
-speed=2,
-done=false,
+     x = 20,
+     y =-20,
+done_y = 79,
+ frame =  3,
+ speed =  2,
+  done = false,
 
-update=function(self)
-if self.done==false then
-self.y=self.y+self.speed
-end
-if self.y >=self.done_y then
-self.done=true
-self.y=0
-end
+update = function(self)
+  if self.done==false then
+    self.y = self.y+self.speed
+  end
+  if self.y >=self.done_y then
+    self.done = true
+    self.y = 0
+  end
 end,
 
-draw=function(self)
+draw = function(self)
  if self.y >=75 then
   self.frame=4
  end
  if not self.done==true then
-  spr(self.frame,self.x,self.y)
-  spr(self.frame+16,self.x,self.y+8) 
+   spr(self.frame,self.x,self.y)
+   spr(self.frame+16,self.x,self.y+8) 
  end
 end
-}
+} -- table warpintro
 
 
 warp={
-x=x,y=y,
-frame=8,
-anim=false,
-anim_time=0,
-anim_wait=0.1,
-done=false,
-update=function(self)
- 
- if warpintro.y >=
- warpintro.done_y-1 then
- self.anim=true
- self.anim_time=time()
+ x=x,y=y,
+     frame=8,
+      anim=false,
+ anim_time=0,
+ anim_wait=0.1,
+      done=false,
 
- end
+ update = function(self)
+   if warpintro.y >= warpintro.done_y-1 then
+     self.anim=true
+     self.anim_time=time()
+   end
+  
+   if self.anim==true and time() - self.anim_time > self.anim_wait then
+     self.anim_time=time()
+     self.frame+=1
+   end 
+   if self.frame>=14 then
+     self.done=true
+     self.anim=false
+   end
+ end, -- update function
 
- if self.anim==true 
- and time() - self.anim_time > self.anim_wait
- then
- self.anim_time=time()
- self.frame+=1
- end 
- if self.frame>=14 then
- self.done=true
- self.anim=false
- end
-end,
-draw=function(self)
-print(self.anim_time)
- if warpintro.done==true then
- 
- spr(self.frame,20,88)
- end
- if self.frame==14 then
- self.done=true
- self.frame=16 
- startmusic(1)
- end
-end
-}
+ draw = function(self)
+   print(self.anim_time)
+   if warpintro.done==true then 
+     spr(self.frame,20,88)
+   end
+   if self.frame==14 then
+     self.done=true
+     self.frame=16 
+     startmusic(1)
+   end
+ end -- draw function
+} -- warp table
 
-man={
-	x=20,y=88,h=h,w=w,
-	frame=14,turn=false,
-	update=function(self)
-	 if btn(0) and warp.done== true then
-		self.x-=1
-		self.turn=true
-	 end
-	 if btn(1) and warp.done== true then
-		self.x+=1
-		self.turn=false
-	 end
-    end,
-    draw=function(self)
-     if warp.done == true then
+ man={
+  x=20,y=88,h=h,w=w,
+  frame=14,turn=false,
+  update=function(self)
+    if btn(0) and warp.done== true then
+      self.x-=1
+      self.turn=true
+    end
+    if btn(1) and warp.done== true then
+      self.x+=1
+      self.turn=false
+    end
+  end, -- update
+
+  draw=function(self)
+    if warp.done == true then
       spr(self.frame,self.x,self.y,1,1)
       spr(self.frame+9,self.x,self.y-8,1,1,self.turn)
-     end
     end
+  end -- draw function
 
-}
+ } -- man
 
 bullet={
-x=man.x+6,
-y=man.y-1,
-move=false,
-done=true,
-update=function(self)
- if btnp(4) 
- and warp.done ==true
- and self.done ==true then
- sfx(2,1,1,10) 
- self.move=true
- self.done=false
- end
- if self.move==true
- and self.done==false then
- self.x+=4
- end
- if self.x > 128 then
- self.done=true
- self.x=man.x+6
- end
-end, --function end
+ x=man.x+6,
+ y=man.y-1,
+ move=false,
+ done=true,
+ update=function(self)
+   if btnp(4)  and warp.done ==true
+               and self.done ==true then
+     sfx(2,1,1,10) 
+     self.move=true
+     self.done=false
+   end
+   if self.move==true and self.done==false then
+     self.x+=4
+   end
+   if self.x > 128 then
+     self.done=true
+     self.x=man.x+6
+   end
+ end, -- update function 
+
 draw=function(self)
  if self.move==true
  and self.done==false then
@@ -127,9 +124,9 @@ draw=function(self)
  circfill(self.x,self.y,2,7)
  end
 end
-}
+ } -- bullet table
 
-end --init end
+end -- _init 
 
 function _update()
 warp:update()
@@ -159,9 +156,6 @@ music(n) music_playing=true
 end
 end
 
---function stopmusic()
---music(-1) music_playing=false
---end
 __gfx__
 00000000003cc30000000000009aa900000000000000009900000000009aa9000000a0000000000000000000000000000000000008088880009aa90000000000
 000000000c8338c000000000099aa990000a00000000999990990000099aa990000aa000000000000000000000000000000000000a8888800a8998a000000000
