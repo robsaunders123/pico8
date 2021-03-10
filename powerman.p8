@@ -110,10 +110,12 @@ bullet={
    end
    if self.move==true and self.done==false then
      self.x+=4
+     self.y-=4
    end
    if self.x > 128 then
      self.done=true
      self.x=man.x+6
+     self.y=man.y-1
    end
  end, -- update function 
 
