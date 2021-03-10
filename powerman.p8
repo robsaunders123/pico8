@@ -98,7 +98,7 @@ warp={
 
 bullet={
  x=man.x+6,
- y=man.y-1,
+ y=man.y+1,
  move=false,
  done=true,
  update=function(self)
