@@ -1,14 +1,6 @@
 # readme.md
 
-Hi Adam!
-Here is a place for code...
-
-Your mission is to figure out how to add a file!
-
-However this maybe over kill... duno
-
-Is there a pico8 way of sharing?
-
+someone's simple space shooter - a helpful guide in unhelpful gifs: https://ztiromoritz.github.io/pico-8-shooter/
 
 Links you gave me:
 
